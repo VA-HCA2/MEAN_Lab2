@@ -41,11 +41,9 @@ router.post('/register', function (request, response) {
 
   user = insertUser(username, email, password);
   if (user) {
-    console.log(`success: Added User is ${user}`);
     response.statusCode = 200;
     response.end();
   } else {
-    console.log("failure/unable to insert");
     response.statusCode = 403; // Forbidden
     response.end();
   }
