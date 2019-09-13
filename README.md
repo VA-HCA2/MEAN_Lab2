@@ -1,2 +1,2 @@
 ### Node/Express 
-- The purspose of this page is create an App using Express Generator.
+- The purpose of this page is create an App using Express Generator.
