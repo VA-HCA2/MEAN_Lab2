@@ -13,8 +13,25 @@ router.get('/register', (request, response) => {
   response.render('register', { pageTitle: 'Register' });
 });
 
+/* Authentication of users login. */
 
-/* Authentication  */
+router.post('/login', function (request, response,next) {
+  users = getUsers();
+
+  // get user data from form
+  var email = request.body.email;
+  var password = request.body.password;
+  if (authorization.authorize(email, password,users)) {
+      response.statusCode = 200;
+      console.log("success");
+      response.end();
+  } else {
+      response.statusCode = 403; // Forbidden
+      response.end();
+  }
+});
+
+/* Post request for register*/
 router.post('/register', function (request, response) {
   // get user data from form
 

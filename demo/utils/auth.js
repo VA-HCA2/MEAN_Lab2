@@ -10,5 +10,5 @@ authorize = function (email, password,users) {
   
   }
   
-  module.exports = authorize
+  module.exports = {authorize}
   
