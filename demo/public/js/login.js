@@ -16,6 +16,7 @@ $(document).ready(function ()
         })
             .done(function (res)
             {
+                $('#msg').removeClass('alert-danger');
                 window.location.href = "/leagues";
             
             })
@@ -31,7 +32,7 @@ $(document).ready(function ()
           
                   $('#msg').removeClass('alert-success');
                   $('#msg').addClass('alert-danger');  
-                  $('#email').focus();
+                  $('#username').focus();
             });
             $('#msg').show();
     });
