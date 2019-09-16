@@ -1,20 +1,25 @@
 // Register a  new member 
 
-$("#registerBtn").on("submit", function(e) {
+$("#registerForm").on("submit",(e) => {
     e.preventDefault();
-    alert();
 
-    $.post("/register", $("#registerForm").serialize(), function (data) {
+    let data = {
+        "username": $("#username").val(),
+        "email": $("#email").val(),
+        "password": $("#password").val()
+    };
+
+    $.post("http://localhost:3000/users/register",data, function () {
     })
     .done(function(res) {
-        data = JSON.parse(data);
 // Return to team details. 
-        location.href = "/login"
+        window.location.href = "/users/login"
     })
     
-    .fail(function (xhr, status, error) {
+    .fail(function ()
+     {
 // Server error 
        $("#errorTeam").html("Error: Team not added because of bad data")
     });
-    return false;
+
 });

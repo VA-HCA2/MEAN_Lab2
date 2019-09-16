@@ -19,9 +19,9 @@ router.post('/login', function (request, response,next) {
   users = getUsers();
 
   // get user data from form
-  var email = request.body.email;
+  var username = request.body.username;
   var password = request.body.password;
-  if (authorization.authorize(email, password,users)) {
+  if (authorization.authorize(username, password,users)) {
       response.statusCode = 200;
       console.log("success");
       response.end();

@@ -144,13 +144,13 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "email",
-							"value": "test@yahoo.com",
+							"key": "username",
+							"value": "sundaytest",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "123456",
+							"value": "1234",
 							"type": "text"
 						}
 					]
