@@ -5,6 +5,10 @@
 $(function () {
   let leaguesObjs;
   let obj;
+
+  $("#logout").css("display", "inline")
+  $("#register").hide()
+  $("#login").hide()
   // Call my get leagues function. 
   getLeagues();
   // Call muy show all function. 
@@ -16,7 +20,6 @@ $(function () {
 
   // Hide and show depeding on the option selected from my  radio buttons. 
   $("#searchLeagues").on("click", function () {
-
     $(".leaguesdiv").show();
     $(".teamsdiv").hide();
     $(".genderdiv").hide();
@@ -34,6 +37,10 @@ $(function () {
     $(".leaguesdiv").hide()
     $(".teamsdiv").hide()
   })
+
+  $("#logout").click(() => {
+    window.location.href = '/users/logout';
+});
 
 });
 
@@ -65,7 +72,7 @@ function getLeagues(leaguesObjs) {
 function getTeams(leaguesObjs) {
   let obj;
   // dropdown for teams 
-  $.getJSON("/api/teams", function (data) {
+  $.getJSON("/teams/data/", function (data) {
     obj = data;
     // Create my dropdown information from api/leagues
     for (let i = 0; i < obj.length; i++) {
@@ -85,7 +92,7 @@ function getTeams(leaguesObjs) {
     $("#teamTable").empty();
     $("#teamHeader").empty();
 
-    $.getJSON("/api/teams/" + $("#teamddl").val(), function (data) {
+    $.getJSON("/teams/data1/" + $("#teamddl").val(), function (data) {
 
       leaguesObjs = data;
 

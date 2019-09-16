@@ -22,13 +22,21 @@ router.post('/login', function (request, response,next) {
   var username = request.body.username;
   var password = request.body.password;
   if (authorization.authorize(username, password,users)) {
+    request.session.username=username;
+    console.log(request.session.username)
       response.statusCode = 200;
       console.log("success");
       response.end();
   } else {
+      request.session.username = null;
       response.statusCode = 403; // Forbidden
       response.end();
   }
+});
+
+router.get('/logout', function(req, res, next) {
+  req.session.username = null;
+  res.redirect('/');
 });
 
 /* Post request for register*/

@@ -24,6 +24,14 @@ a:hover {
   color: rgb(51, 51, 116)
 }
 
+#logout,#leagues{
+  display: none;
+}
+
+#logout{
+  border-color: #fff;
+  background-color: #fff
+}
 /*Footer*/
 
 .footer {
