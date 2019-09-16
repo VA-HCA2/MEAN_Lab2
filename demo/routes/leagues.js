@@ -8,12 +8,13 @@ router.get('/',(request, response) => {
 
 router.get('/data', (request, response) => {
     try{
-        response.end(fs.readFileSync('./data/leagues.json'))
+        response.end(fs.readFileSync('./data/leagues.json'));
     }
     catch(err){
         // if there is nothing send an empty array 
         response.end('[]');
     }
 });
+
 
 module.exports=router;

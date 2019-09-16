@@ -22,9 +22,7 @@ $(document).ready(function ()
             })
             .fail(function (e)
             {
-                if (e.status === 401) {
-                    $('#msg').html('Account locked!');
-                  } else if (e.status === 403) {
+                    if (e.status === 403) {
                     $('#msg').html('Invalid Creds!');
                   } else {
                     $('#msg').html(`Error: ${e.status}`);
@@ -36,4 +34,8 @@ $(document).ready(function ()
             });
             $('#msg').show();
     });
+});
+
+$("#resetBtn").click(function() {
+    $('#msg').hide();
 });

@@ -49,8 +49,8 @@ function getLeagues(leaguesObjs) {
     // Clear my table header and table body when user selects another league
     $("#teamTable").empty();
     $("#teamHeader").empty();
-    $.getJSON("/api/teams/byleague/" + $("#leaguesddl").val(), function (data) {
-
+    $.getJSON("/teams/data/" + $("#leaguesddl").val(), function (data) {
+   
       leaguesObjs = data;
       // Call my create a header function
       createHeader()
@@ -138,7 +138,7 @@ function showAllFunction(leaguesObjs) {
     // Clear my table header and table 
     $("#teamTable").empty();
     $("#teamHeader").empty();
-    $.getJSON("/api/teams", function (data) {
+    $.getJSON("/teams/data", function (data) {
       leaguesObjs = data;
       // Call create header function
       createHeader()
