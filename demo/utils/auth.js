@@ -1,6 +1,6 @@
-authorize = function (email, password,users) {
+authorize = function (username, password,users) {
     var validUser = users.filter((user) => {
-      return user.email === email && user.password === password;
+      return user.username === username && user.password === password;
     });
   
     if (validUser.length === 1) {

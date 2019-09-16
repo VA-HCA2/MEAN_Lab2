@@ -19,9 +19,9 @@ router.post('/login', function (request, response,next) {
   users = getUsers();
 
   // get user data from form
-  var email = request.body.email;
+  var username = request.body.username;
   var password = request.body.password;
-  if (authorization.authorize(email, password,users)) {
+  if (authorization.authorize(username, password,users)) {
       response.statusCode = 200;
       console.log("success");
       response.end();
@@ -41,11 +41,9 @@ router.post('/register', function (request, response) {
 
   user = insertUser(username, email, password);
   if (user) {
-    console.log(`success: Added User is ${user}`);
     response.statusCode = 200;
     response.end();
   } else {
-    console.log("failure/unable to insert");
     response.statusCode = 403; // Forbidden
     response.end();
   }
@@ -95,4 +93,5 @@ var getUsers = function () {
   }
 }
 
+//neo is the best
 module.exports = router
