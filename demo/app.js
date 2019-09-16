@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
+var session = require('express-session');
 
 // Register routes 
 var indexRouter = require('./routes/index');
@@ -28,10 +29,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session 
+
+app.use(session({
+  secret: "hca2",
+  resave: "true",
+  saveUninitialized: "true"
+}));
+
+// Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/leagues', leaguesRouter);
 app.use('/teams', teamsRouter);
+
 
 //catch 404 and forward to error handler
  app.use(function(req, res, next) {

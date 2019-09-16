@@ -16,15 +16,12 @@ router.get('/data', (request, response) => {
     }
 });
 
-/*var teamIdLoc=location.href.lastIndexOf("/")+1;
-var teamId=location.href.substring(teamIdLoc,location.href.length) */
-
 // GET MANY TEAMS BY LEAGUE
-router.get("/teams/data/:id", function (req, res) {
+router.get("/data/:id", function (req, res) {
     let id = req.params.id;
     console.log("Received a GET request for teams in league " + id);                      
 
-    let data = fs.readFileSync( __dirname + "/data/teams.json", "utf8");
+    let data = fs.readFileSync("./data/teams.json");
     data = JSON.parse(data);
 
     // find the matching teams for 
@@ -35,10 +32,39 @@ router.get("/teams/data/:id", function (req, res) {
     res.end( JSON.stringify(matches) );
 })
 
+
+// GET ONE TEAM BY ID
+router.get("/data1/:id", function (req, res) {
+    let id = req.params.id;
+    console.log("Received a GET request for team " + id);
+
+    let data = fs.readFileSync("./data/teams.json");
+    data = JSON.parse(data);
+
+    let match = getMatchingTeamById(id, data)
+    console.log(match)
+    if (match == null)
+	{
+		res.status(404).send("Not Found");
+		return;
+	}
+
+    //console.log("Returned data is: ");
+    //logOneTeam(match);
+    res.end( JSON.stringify(match) );
+})
+
 function getMatchingTeamsByLeague(leagueCode, data)
 {
     let matches = data.filter( t => t.League == leagueCode );
     return matches;
 }
-module.exports=router;
 
+
+function getMatchingTeamById(id, data)
+{
+    let match = data.find(t => t.TeamId == id);
+    return match;
+}
+
+module.exports=router;
