@@ -3,10 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// Partials
 const hbs = require('hbs');
-const bodyParser = require('body-parser');
+// For session to store data
 var session = require('express-session');
-
 // Register routes 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,7 +18,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 
 // register hbs partials
-hbs.registerPartials(__dirname+ '/views/partials')
+hbs.registerPartials(__dirname + '/views/partials')
 
 // set view engine
 app.set('view engine', 'hbs');
@@ -30,7 +30,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // session 
-
 app.use(session({
   secret: "hca2",
   resave: "true",
@@ -45,12 +44,12 @@ app.use('/teams', teamsRouter);
 
 
 //catch 404 and forward to error handler
- app.use(function(req, res, next) {
- next(createError(404));
- });
+app.use(function (req, res, next) {
+  next(createError(404));
+});
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

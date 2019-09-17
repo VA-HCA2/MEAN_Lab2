@@ -1,8 +1,9 @@
 // Onload function
 "use strict";
 $(function () {
-     // Hide error 
-     $("#error").hide();
+    // Hide error 
+    $("#error").hide();
+    $("#register").hide();
     // Register a  new member 
     $("#registerForm").on("submit", (e) => {
         e.preventDefault();

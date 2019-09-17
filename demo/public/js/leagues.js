@@ -116,7 +116,7 @@ function searchByGender(leaguesObjs) {
     $("#teamTable").empty();
     $("#teamHeader").empty();
 
-    $.getJSON("/api/teams/", function (data) {
+    $.getJSON("/teams/data", function (data) {
       let leagues = data
       // Call my create a header function
       createHeader()
