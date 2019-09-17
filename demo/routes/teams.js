@@ -48,9 +48,6 @@ router.get("/data1/:id", function (req, res) {
 		res.status(404).send("Not Found");
 		return;
 	}
-
-    //console.log("Returned data is: ");
-    //logOneTeam(match);
     res.end( JSON.stringify(match) );
 })
 

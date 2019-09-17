@@ -13,36 +13,37 @@ router.get('/register', (request, response) => {
   response.render('register', { pageTitle: 'Register' });
 });
 
-/* Authentication of users login. */
+// Authentication of users login. Post request//
 
-router.post('/login', function (request, response,next) {
+router.post('/login', function (request, response, next) {
   users = getUsers();
 
   // get user data from form
   var username = request.body.username;
   var password = request.body.password;
-  if (authorization.authorize(username, password,users)) {
-    request.session.username=username;
+  if (authorization.authorize(username, password, users)) {
+    request.session.username = username;
     console.log(request.session.username)
-      response.statusCode = 200;
-      console.log("success");
-      response.end();
+    response.statusCode = 200;
+    console.log("success");
+    response.end();
   } else {
-      request.session.username = null;
-      response.statusCode = 403; // Forbidden
-      response.end();
+    request.session.username = null;
+    response.statusCode = 403; // Forbidden
+    response.end();
   }
 });
 
-router.get('/logout', function(req, res, next) {
+router.get('/logout', function (req, res, next) {
   req.session.username = null;
   res.redirect('/');
 });
 
-/* Post request for register*/
-router.post('/register', function (request, response) {
-  // get user data from form
 
+// Post request for register //
+router.post('/register', function (request, response) {
+
+  // get user data from form
   var username = request.body.username;
   var email = request.body.email;
   var password = request.body.password;
@@ -62,9 +63,7 @@ router.post('/register', function (request, response) {
 var insertUser = (username, email, password) => {
   var users = getUsers();
 
-  // in ES6, if param and prop names are the same,
-  // you can use the following syntax instead of
-  // name: name, elev: elev
+  // in ES6, if param and prop names are the same
   var user = {
     username,
     email,
