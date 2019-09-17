@@ -1,4 +1,4 @@
-### MEAN_Lab2_3
+### MEAN_Lab2
 
 - Back-end server side implemeneted using express generator and connected to hbs pages.
 - It contains pages from the Capstone with two more pages added : Register and Login.
